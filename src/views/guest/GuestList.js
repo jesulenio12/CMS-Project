@@ -4,9 +4,9 @@ import 'datatables.net';
 import 'datatables.net-bs4';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../all-views-scss/_datatable.scss'
-import { FaEdit, FaTrash, FaEye, FaFilter, FaUsersCog } from 'react-icons/fa';
-import { MdDriveFileRenameOutline, MdContactPhone, MdCake, MdEmail, MdNumbers } from 'react-icons/md';
-import { BsFiletypeCsv, BsFillPlusSquareFill, BsFillShieldLockFill } from 'react-icons/bs';
+import { FaEdit, FaFilter } from 'react-icons/fa';
+import { MdDriveFileRenameOutline, MdContactPhone, MdNumbers } from 'react-icons/md';
+import { BsFiletypeCsv, BsFillPlusSquareFill } from 'react-icons/bs';
 import { FiRefreshCcw, FiUpload } from 'react-icons/fi';
 import { HiIdentification } from 'react-icons/hi';
 import { RiCalendarTodoFill } from 'react-icons/ri';
@@ -159,7 +159,13 @@ const GuestList = () => {
               <td>{entry.last_name}</td>
               <td>{entry.contact_no}</td>
               <td>{entry.date_visit}</td>
-              <td>{entry.status}</td>
+              <td>
+                <Form.Label className="toggle">
+                  <Form.Control type="checkbox" />
+                  <span className="slider"></span>
+                  <span className="labels" data-on="Approved" data-off="Declined"></span>
+                </Form.Label>
+              </td>
               <td>
                 {' '}
                 <Button
@@ -173,12 +179,13 @@ const GuestList = () => {
           ))}
         </tbody>
       </table>
+
+      {/* ADD MODAL START */}
       <Modal show={showAddModal} onHide={() => setShowAddModal(false)}>
         <br/>
         <h1 className="text-divider">Add New Guest</h1>
         <Modal.Body>
           <Form onSubmit={handleFormSubmit}>
-
             <Form.Group controlId="unit_id" className="addForm">
               <Form.Label className="formIcon"><HiIdentification /></Form.Label>
               <Form.Control
@@ -189,7 +196,6 @@ const GuestList = () => {
                 onChange={handleInputChange}
               />
             </Form.Group>
-
             <Form.Group controlId="guest_num" className="addForm">
             <Form.Label className="formIcon"><CgUserList /></Form.Label>
               <Form.Control
@@ -200,7 +206,6 @@ const GuestList = () => {
                 onChange={handleInputChange}
               />
             </Form.Group>
-
             <Form.Group controlId="unit_num" className="addForm">
               <Form.Label className="formIcon"><MdNumbers /></Form.Label>
               <Form.Control
@@ -211,7 +216,6 @@ const GuestList = () => {
                 onChange={handleInputChange}
               />
             </Form.Group>
-
             <Form.Group controlId="first_name" className="addForm">
               <Form.Label className="formIcon"><MdDriveFileRenameOutline /></Form.Label>
               <Form.Control
@@ -222,7 +226,6 @@ const GuestList = () => {
                 onChange={handleInputChange}
               />
             </Form.Group>
-
             <Form.Group controlId="last_name" className="addForm">
               <Form.Label className="formIcon"><MdDriveFileRenameOutline /></Form.Label>
               <Form.Control
@@ -233,7 +236,6 @@ const GuestList = () => {
                 onChange={handleInputChange}
               />
             </Form.Group>
-
             <Form.Group controlId="contact_no" className="addForm">
               <Form.Label className="formIcon"><MdContactPhone /></Form.Label>
               <Form.Control
@@ -244,7 +246,6 @@ const GuestList = () => {
                 onChange={handleInputChange}
               />
             </Form.Group>
-
             <Form.Group controlId="date_visit" className="addForm">
               <Form.Label className="formIcon"><RiCalendarTodoFill /></Form.Label>
               <Form.Control
@@ -255,7 +256,6 @@ const GuestList = () => {
                 onChange={handleInputChange}
               />
             </Form.Group>
-
             <br />
             <Modal.Footer className="modalbtn">
               <Button className="primarybtn" onClick={() => setShowAddModal(false)}>
@@ -268,7 +268,9 @@ const GuestList = () => {
           </Form>
         </Modal.Body>
       </Modal>
-      {/* Upload Modal */}
+      {/* ADD MODAL END */}
+
+      {/* UPLOAD MODAL START */}
       <Modal show={showUploadModal} onHide={() => setShowUploadModal(false)}>
         <br/>
         <h1 className="text-divider">Upload CSV</h1>
@@ -285,7 +287,6 @@ const GuestList = () => {
                 onChange={handleInputChange}
               />
             </Form.Group>
-
             <br />
             <Modal.Footer className="modalbtn">
               <Button className="primarybtn" onClick={() => setShowUploadModal(false)}>
@@ -298,13 +299,14 @@ const GuestList = () => {
           </Form>
         </Modal.Body>
       </Modal>
+      {/* UPLOAD MODAL END */}
 
+      {/* EDIT MODAL START */}
       <Modal show={showEditModal} onHide={() => setShowEditModal(false)}>
         <br/>
         <h1 className="text-divider">Edit Guest</h1>
         <Modal.Body>
           <Form onSubmit={handleUpdateSubmit}>
-
           <Form.Group controlId="unit_id" className="addForm">
               <Form.Label className="formIcon"><HiIdentification /></Form.Label>
               <Form.Control
@@ -316,7 +318,6 @@ const GuestList = () => {
                 onChange={handleInputChange}
               />
             </Form.Group>
-
             <Form.Group controlId="guest_num" className="addForm">
             <Form.Label className="formIcon"><CgUserList /></Form.Label>
               <Form.Control
@@ -328,7 +329,6 @@ const GuestList = () => {
                 onChange={handleInputChange}
               />
             </Form.Group>
-
             <Form.Group controlId="unit_num" className="addForm">
               <Form.Label className="formIcon"><MdNumbers /></Form.Label>
               <Form.Control
@@ -340,7 +340,6 @@ const GuestList = () => {
                 onChange={handleInputChange}
               />
             </Form.Group>
-
             <Form.Group controlId="first_name" className="addForm">
               <Form.Label className="formIcon"><MdDriveFileRenameOutline /></Form.Label>
               <Form.Control
@@ -352,7 +351,6 @@ const GuestList = () => {
                 onChange={handleInputChange}
               />
             </Form.Group>
-
             <Form.Group controlId="last_name" className="addForm">
               <Form.Label className="formIcon"><MdDriveFileRenameOutline /></Form.Label>
               <Form.Control
@@ -364,7 +362,6 @@ const GuestList = () => {
                 onChange={handleInputChange}
               />
             </Form.Group>
-
             <Form.Group controlId="contact_no" className="addForm">
               <Form.Label className="formIcon"><MdContactPhone /></Form.Label>
               <Form.Control
@@ -376,7 +373,6 @@ const GuestList = () => {
                 onChange={handleInputChange}
               />
             </Form.Group>
-
             <Form.Group controlId="date_visit" className="addForm">
               <Form.Label className="formIcon"><RiCalendarTodoFill /></Form.Label>
               <Form.Control
@@ -388,7 +384,6 @@ const GuestList = () => {
                 onChange={handleInputChange}
               />
             </Form.Group>
-
             <br />
             <Modal.Footer className="modalbtn">
               <Button className="primarybtn" onClick={() => setShowEditModal(false)}>
@@ -401,6 +396,7 @@ const GuestList = () => {
           </Form>
         </Modal.Body>
       </Modal>
+      {/* EDIT MODAL ENDS */}
     </div>
   );
 };

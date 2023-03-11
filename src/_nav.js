@@ -5,6 +5,7 @@ import {
   //cilCalculator,
   //cilChartPie,
   //cilCursor,
+  cilShieldAlt,
   cilDescription,
   //cilDrop,
   // cilNotes,
@@ -78,23 +79,12 @@ const _nav = [
       },
     ],
   },
+
   {
-    component: CNavGroup,
+    component: CNavItem,
     name: 'Requests',
-    to: '/requests',
+    to: '/requests/requestlist',
     icon: <CIcon icon={cilDescription} customClassName="nav-icon" />,
-    items: [
-      {
-        component: CNavItem,
-        name: 'Request List',
-        to: '/requests/requestlist',
-      },
-      {
-        component: CNavItem,
-        name: 'Request Approval',
-        to: '/requests/requestapproval',
-      },
-    ],
   },
 
   {
@@ -121,6 +111,13 @@ const _nav = [
     name: 'Users',
     to: '/user/userlist',
     icon: <CIcon icon={cilPeople} customClassName="nav-icon" />,
+  },
+
+  {
+    component: CNavItem,
+    name: 'Security Guards',
+    to: '/security/securityguardlist',
+    icon: <CIcon icon={cilShieldAlt} customClassName="nav-icon" />,
   },
 
   {

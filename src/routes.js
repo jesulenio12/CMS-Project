@@ -61,11 +61,9 @@ const CondoUnitList = React.lazy(() => import('./views/unit/CondoUnitList'))
 const UserList = React.lazy(() => import('./views/user/UserList'))
 
 //Security
-const AddNewSecurityGuard = React.lazy(() => import('./views/security/AddNewSecurityGuard'))
 const SecurityGuardList = React.lazy(() => import('./views/security/SecurityGuardList'))
 
 //Request
-const RequestApproval = React.lazy(() => import('./views/request/RequestApproval'))
 const RequestList = React.lazy(() => import('./views/request/RequestList'))
 
 //Guest
@@ -131,12 +129,10 @@ const routes = [
   { path: '/billings/associationduelist', name: 'Association Due List', element: AssocDueList },
   { path: '/billings/addbilling', name: 'Add Billing', element: AddBilling },
   { path: '/requests/requestlist', name: 'Request List', element: RequestList },
-  { path: '/requests/requestapproval', name: 'Request Approval', element: RequestApproval },
   { path: '/services/servicelist', name: 'Service List', element: ServiceList },
   { path: '/units/condounitlist', name: 'View Unit Details', element: CondoUnitList },
   { path: '/user/userlist', name: 'User List', element: UserList },
   { path: '/security/securityguardlist', name: 'Security Guard List', element: SecurityGuardList },
-  { path: '/security/addsecurityguard', name: 'Add Security Guard', element: AddNewSecurityGuard },
   { path: '/admin/adminlist', name: 'Admin List', element: AdminList },
   { path: '/admin/addadmin', name: 'Add Admin User', element: AddNewAdminUser },
   { path: '/admin/adminprivileges', name: 'Admin Privileges', element: AdminPriv },
